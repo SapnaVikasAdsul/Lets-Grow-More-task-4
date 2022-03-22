@@ -1,0 +1,128 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+<link href="todocss.css" rel="stylesheet">
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<script src="js/bootstrap.min.js"></script>
+<title>Todo list</title>
+</head>
+<body>
+
+<center><h2 style="color: white;">Todo List</h2></center>
+<div class="container">
+
+<input type="text" id="name" class="input form-control" placeholder="Enter your task here" />
+<!-- <input type="button" value="add" id="btnclick" class="btn" onclick="addmore()"/> -->
+<button type="button" value="add" id="btnclick" class="btn" onclick="addmore()"><img src="plus.png" width="100%" style="margin-top: -65%;"></button>
+<span id="error"></span>
+<ul id="box"></ul>
+
+</div>
+<script type="text/javascript" src="todojs.js"></script>
+
+<body>
+</html>
+
+<style>
+body{
+font-family: "poppins",sans-serif;
+margin-top: 10%;
+background-color: #5d5959;
+
+}
+
+.container{
+padding: 10px;
+border: 1px solid #BCB9B8;
+width: 40%;
+margin: auto;
+}
+
+.container .input{
+width: 87%;
+/*height: 20px;*/
+}
+.container .btn {
+width: 50px;
+height: 25px;
+}
+.container ul{
+list-style: none;
+padding: 0px;
+
+}
+.container li{
+color: black;
+    background-color: #f8f8f8;
+    width: 87%;
+    border-radius: 5px;
+    margin-top: 10px;
+    height: 32px;
+    padding: 5px;
+}
+.container li a{
+float: right;
+color: white;
+text-decoration: none;
+font-weight: bold;
+}
+.container #error{
+color: red;
+font-size: 14px;
+}
+
+.form-control {
+     display: inline; 
+    width: 100%;
+    height: calc(1.5em + 0.75rem + 2px);
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+</style>
+
+<script>
+//js file
+function addmore()
+{
+document.getElementById('error').innerHTML="";
+
+let name=document.getElementById('name').value;
+if(name==''){
+document.getElementById('error').innerHTML="plz enter value";
+}else{
+let box=document.getElementById('box');
+let li=document.createElement('li');
+li.textContent=name;
+
+box.appendChild(li);
+
+let a=document.createElement('a');
+a.textContent='x';
+a.href="javascript:void(0)";
+
+li.appendChild(a);
+
+
+}
+
+document.getElementById('name').value="";
+}
+
+let btn=document.querySelector('ul');
+btn.addEventListener('click',function(e){
+let box=document.getElementById('box');
+
+let li=e.target.parentNode;
+box.removeChild(li);
+});
+
+</script>
